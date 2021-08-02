@@ -34,7 +34,6 @@ canvas {
 
 .app-card {
   text-align: center;
-  height: 0;
   transition: all ease-in-out 1s;
 }
 
