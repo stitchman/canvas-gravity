@@ -30,8 +30,25 @@ class App {
         BALL_VELOCITY
       );
       this.splashes.push(splash);
-      console.log(this.splashes);
+
+      if (this.splashes.length === 2) {
+        const appCard = document.querySelector(".app-card");
+        const description = document.querySelector(".description");
+        appCard.style.height = "100%";
+        description.style.color = "transparent";
+      }
     });
+
+    this.splashes.push(
+      new Splash(
+        this.stageWidth / 2,
+        this.stageHeight / 2,
+        COLORS,
+        TOTALBALLS,
+        BALL_RADIUS,
+        BALL_VELOCITY
+      )
+    );
 
     window.requestAnimationFrame(this.animate.bind(this));
   }

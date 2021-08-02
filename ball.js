@@ -9,7 +9,10 @@ export class Ball {
   }
 
   update(stageWidth, stageHeight, gravity, frictionAir, frictionGround) {
-    if (this.x - this.radius < 0 || this.x + this.radius > stageWidth) {
+    if (
+      (this.x - this.radius <= 0 && this.vx < 0) ||
+      (this.x + this.radius >= stageWidth && this.vx > 0)
+    ) {
       this.vx *= -1 * frictionGround;
       this.x += this.vx;
     } else {
@@ -19,7 +22,7 @@ export class Ball {
       this.y += this.vy;
     }
 
-    if (this.y + this.radius + this.vy >= stageHeight && this.vy >= -gravity) {
+    if (this.y + this.radius >= stageHeight && this.vy > 0) {
       this.vy *= -1 * frictionGround;
     } else {
       this.vy += gravity;
